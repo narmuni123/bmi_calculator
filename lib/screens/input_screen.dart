@@ -12,6 +12,9 @@ class _InputScreenState extends State<InputScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF0A0E21),
+      ),
       body: Container(),
     );
   }
