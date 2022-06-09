@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class InputScreen extends StatefulWidget {
   const InputScreen({Key? key}) : super(key: key);
 
@@ -19,7 +18,47 @@ class _InputScreenState extends State<InputScreen> {
           "BMI CALCULATOR",
         ),
       ),
-      body:  const Center(child: Text("Test"),),
+      body: Column(
+        children: [
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  child: boxContainer(),
+                ),
+                Expanded(
+                  child: boxContainer(),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: boxContainer(),
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  child: boxContainer(),
+                ),
+                Expanded(
+                  child: boxContainer(),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget boxContainer() {
+    return Container(
+      margin: const EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        color: const Color(0xFF1D1E33),
+        borderRadius: BorderRadius.circular(10),
+      ),
     );
   }
 }
