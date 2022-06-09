@@ -14,8 +14,12 @@ class _InputScreenState extends State<InputScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF0A0E21),
+        centerTitle: true,
+        title: const Text(
+          "BMI CALCULATOR",
+        ),
       ),
-      body: Container(),
+      body:  const Center(child: Text("Test"),),
     );
   }
 }
