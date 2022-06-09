@@ -24,25 +24,25 @@ class _InputScreenState extends State<InputScreen> {
             child: Row(
               children: [
                 Expanded(
-                  child: boxContainer(),
+                  child: boxContainer(color: const Color(0xFF1D1E33)),
                 ),
                 Expanded(
-                  child: boxContainer(),
+                  child: boxContainer(color: const Color(0xFF1D1E33)),
                 ),
               ],
             ),
           ),
           Expanded(
-            child: boxContainer(),
+            child: boxContainer(color: const Color(0xFF1D1E33)),
           ),
           Expanded(
             child: Row(
               children: [
                 Expanded(
-                  child: boxContainer(),
+                  child: boxContainer(color: const Color(0xFF1D1E33)),
                 ),
                 Expanded(
-                  child: boxContainer(),
+                  child: boxContainer(color: const Color(0xFF1D1E33)),
                 ),
               ],
             ),
@@ -52,11 +52,11 @@ class _InputScreenState extends State<InputScreen> {
     );
   }
 
-  Widget boxContainer() {
+  Widget boxContainer({required Color color}) {
     return Container(
       margin: const EdgeInsets.all(15),
       decoration: BoxDecoration(
-        color: const Color(0xFF1D1E33),
+        color: color,
         borderRadius: BorderRadius.circular(10),
       ),
     );
