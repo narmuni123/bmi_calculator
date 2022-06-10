@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/reusable/color_constant.dart';
 import 'package:flutter/material.dart';
 
 class InputScreen extends StatefulWidget {
@@ -24,25 +25,25 @@ class _InputScreenState extends State<InputScreen> {
             child: Row(
               children: [
                 Expanded(
-                  child: boxContainer(color: const Color(0xFF1D1E33)),
+                  child: boxContainer(color: ColorConstant.activeContainerColor),
                 ),
                 Expanded(
-                  child: boxContainer(color: const Color(0xFF1D1E33)),
+                  child: boxContainer(color: ColorConstant.activeContainerColor),
                 ),
               ],
             ),
           ),
           Expanded(
-            child: boxContainer(color: const Color(0xFF1D1E33)),
+            child: boxContainer(color: ColorConstant.activeContainerColor),
           ),
           Expanded(
             child: Row(
               children: [
                 Expanded(
-                  child: boxContainer(color: const Color(0xFF1D1E33)),
+                  child: boxContainer(color: ColorConstant.activeContainerColor),
                 ),
                 Expanded(
-                  child: boxContainer(color: const Color(0xFF1D1E33)),
+                  child: boxContainer(color: ColorConstant.activeContainerColor),
                 ),
               ],
             ),
