@@ -25,25 +25,25 @@ class _InputScreenState extends State<InputScreen> {
             child: Row(
               children: [
                 Expanded(
-                  child: boxContainer(color: ColorConstant.activeContainerColor),
+                  child: boxContainer(color: ColorConstant.activeContainerColor, cardChild: const SizedBox()),
                 ),
                 Expanded(
-                  child: boxContainer(color: ColorConstant.activeContainerColor),
+                  child: boxContainer(color: ColorConstant.activeContainerColor, cardChild: const SizedBox()),
                 ),
               ],
             ),
           ),
           Expanded(
-            child: boxContainer(color: ColorConstant.activeContainerColor),
+            child: boxContainer(color: ColorConstant.activeContainerColor, cardChild: const SizedBox()),
           ),
           Expanded(
             child: Row(
               children: [
                 Expanded(
-                  child: boxContainer(color: ColorConstant.activeContainerColor),
+                  child: boxContainer(color: ColorConstant.activeContainerColor, cardChild: const SizedBox()),
                 ),
                 Expanded(
-                  child: boxContainer(color: ColorConstant.activeContainerColor),
+                  child: boxContainer(color: ColorConstant.activeContainerColor, cardChild: const SizedBox()),
                 ),
               ],
             ),
@@ -59,13 +59,14 @@ class _InputScreenState extends State<InputScreen> {
     );
   }
 
-  Widget boxContainer({required Color color}) {
+  Widget boxContainer({required Color color, required Widget cardChild}) {
     return Container(
       margin: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(10),
       ),
+      child: cardChild,
     );
   }
 }
