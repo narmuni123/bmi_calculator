@@ -48,6 +48,12 @@ class _InputScreenState extends State<InputScreen> {
               ],
             ),
           ),
+          Container(
+            color: ColorConstant.bottomContainerColor,
+            margin: const EdgeInsets.only(top: 10),
+            width: double.infinity,
+            height: 80,
+          ),
         ],
       ),
     );
