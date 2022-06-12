@@ -10,26 +10,28 @@ class InputScreen extends StatefulWidget {
 }
 
 class _InputScreenState extends State<InputScreen> {
-
   Color maleCardColor = ColorConstant.inActiveContainerColor;
   Color femaleCardColor = ColorConstant.inActiveContainerColor;
 
-  void updateColor(int genderSelected){
-   if(genderSelected == 1){
-     if(maleCardColor == ColorConstant.inActiveContainerColor){
-         maleCardColor = ColorConstant.activeContainerColor;
-     }else{
-         maleCardColor = ColorConstant.inActiveContainerColor;
-     }
-   }
-   if(genderSelected == 2){
-     if(femaleCardColor == ColorConstant.inActiveContainerColor){
-         femaleCardColor = ColorConstant.activeContainerColor;
-     }else{
-             femaleCardColor = ColorConstant.inActiveContainerColor;
-     }
-   }
+  void updateColor(int genderSelected) {
+    if (genderSelected == 1) {
+      if (maleCardColor == ColorConstant.inActiveContainerColor) {
+        maleCardColor = ColorConstant.activeContainerColor;
+        femaleCardColor = ColorConstant.inActiveContainerColor;
+      } else {
+        maleCardColor = ColorConstant.inActiveContainerColor;
+      }
+    }
+    if (genderSelected == 2) {
+      if (femaleCardColor == ColorConstant.inActiveContainerColor) {
+        femaleCardColor = ColorConstant.activeContainerColor;
+        maleCardColor = ColorConstant.inActiveContainerColor;
+      } else {
+        femaleCardColor = ColorConstant.inActiveContainerColor;
+      }
+    }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,21 +50,27 @@ class _InputScreenState extends State<InputScreen> {
                 Expanded(
                   child: boxContainer(
                     color: maleCardColor,
-                    cardChild: genderCard(icon: FontAwesomeIcons.mars, title: "MALE", callbackAction: (){
-                      setState(() {
-                        updateColor(1);
-                      });
-                    }),
+                    cardChild: genderCard(
+                        icon: FontAwesomeIcons.mars,
+                        title: "MALE",
+                        callbackAction: () {
+                          setState(() {
+                            updateColor(1);
+                          });
+                        }),
                   ),
                 ),
                 Expanded(
                   child: boxContainer(
                     color: femaleCardColor,
-                    cardChild: genderCard(icon: FontAwesomeIcons.venus, title: "FEMALE", callbackAction: (){
-                      setState(() {
-                        updateColor(2);
-                      });
-                    }),
+                    cardChild: genderCard(
+                        icon: FontAwesomeIcons.venus,
+                        title: "FEMALE",
+                        callbackAction: () {
+                          setState(() {
+                            updateColor(2);
+                          });
+                        }),
                   ),
                 ),
               ],
@@ -114,7 +122,10 @@ class _InputScreenState extends State<InputScreen> {
     );
   }
 
-  Widget genderCard({required IconData icon, required String title, required GestureTapCallback callbackAction}){
+  Widget genderCard(
+      {required IconData icon,
+      required String title,
+      required GestureTapCallback callbackAction}) {
     return GestureDetector(
       onTap: callbackAction,
       child: Column(
