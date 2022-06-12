@@ -10,6 +10,9 @@ class InputScreen extends StatefulWidget {
 }
 
 class _InputScreenState extends State<InputScreen> {
+
+  Color maleCardColor = ColorConstant.inActiveContainerColor;
+  Color femaleCardColor = ColorConstant.inActiveContainerColor;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
