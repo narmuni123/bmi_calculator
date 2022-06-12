@@ -13,6 +13,30 @@ class _InputScreenState extends State<InputScreen> {
 
   Color maleCardColor = ColorConstant.inActiveContainerColor;
   Color femaleCardColor = ColorConstant.inActiveContainerColor;
+
+  void updateColor(int genderSelected){
+   if(genderSelected == 1){
+     if(maleCardColor == ColorConstant.inActiveContainerColor){
+       setState(() {
+         maleCardColor = ColorConstant.activeContainerColor;
+       });
+     }else{
+       setState(() {
+         maleCardColor = ColorConstant.inActiveContainerColor;
+       });
+     }
+   }else{
+     if(femaleCardColor == ColorConstant.inActiveContainerColor){
+       setState(() {
+         femaleCardColor = ColorConstant.activeContainerColor;
+       });
+     }else{
+       setState(() {
+         femaleCardColor = ColorConstant.inActiveContainerColor;
+       });
+     }
+   }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,13 +54,13 @@ class _InputScreenState extends State<InputScreen> {
               children: [
                 Expanded(
                   child: boxContainer(
-                    color: ColorConstant.activeContainerColor,
+                    color: maleCardColor,
                     cardChild: genderCard(icon: FontAwesomeIcons.mars, title: "MALE", callbackAction: (){}),
                   ),
                 ),
                 Expanded(
                   child: boxContainer(
-                    color: ColorConstant.activeContainerColor,
+                    color: femaleCardColor,
                     cardChild: genderCard(icon: FontAwesomeIcons.venus, title: "FEMALE", callbackAction: (){}),
                   ),
                 ),
