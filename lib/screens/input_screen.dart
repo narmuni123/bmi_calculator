@@ -1,5 +1,6 @@
 import 'package:bmi_calculator/reusable/color_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class InputScreen extends StatefulWidget {
   const InputScreen({Key? key}) : super(key: key);
@@ -25,25 +26,40 @@ class _InputScreenState extends State<InputScreen> {
             child: Row(
               children: [
                 Expanded(
-                  child: boxContainer(color: ColorConstant.activeContainerColor, cardChild: const SizedBox()),
+                  child: boxContainer(
+                    color: ColorConstant.activeContainerColor,
+                    cardChild: genderCard(icon: FontAwesomeIcons.mars, title: "MALE"),
+                  ),
                 ),
                 Expanded(
-                  child: boxContainer(color: ColorConstant.activeContainerColor, cardChild: const SizedBox()),
+                  child: boxContainer(
+                    color: ColorConstant.activeContainerColor,
+                    cardChild: genderCard(icon: FontAwesomeIcons.venus, title: "FEMALE"),
+                  ),
                 ),
               ],
             ),
           ),
           Expanded(
-            child: boxContainer(color: ColorConstant.activeContainerColor, cardChild: const SizedBox()),
+            child: boxContainer(
+              color: ColorConstant.activeContainerColor,
+              cardChild: const SizedBox(),
+            ),
           ),
           Expanded(
             child: Row(
               children: [
                 Expanded(
-                  child: boxContainer(color: ColorConstant.activeContainerColor, cardChild: const SizedBox()),
+                  child: boxContainer(
+                    color: ColorConstant.activeContainerColor,
+                    cardChild: const SizedBox(),
+                  ),
                 ),
                 Expanded(
-                  child: boxContainer(color: ColorConstant.activeContainerColor, cardChild: const SizedBox()),
+                  child: boxContainer(
+                    color: ColorConstant.activeContainerColor,
+                    cardChild: const SizedBox(),
+                  ),
                 ),
               ],
             ),
@@ -67,6 +83,29 @@ class _InputScreenState extends State<InputScreen> {
         borderRadius: BorderRadius.circular(10),
       ),
       child: cardChild,
+    );
+  }
+
+  Widget genderCard({required IconData icon, required String title}){
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(
+          icon,
+          size: 80.0,
+          color: Colors.white,
+        ),
+        const SizedBox(
+          height: 15.0,
+        ),
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 18,
+            color: Color(0xFF8D8E98),
+          ),
+        ),
+      ],
     );
   }
 }
