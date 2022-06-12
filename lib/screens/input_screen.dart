@@ -28,13 +28,13 @@ class _InputScreenState extends State<InputScreen> {
                 Expanded(
                   child: boxContainer(
                     color: ColorConstant.activeContainerColor,
-                    cardChild: genderCard(icon: FontAwesomeIcons.mars, title: "MALE"),
+                    cardChild: genderCard(icon: FontAwesomeIcons.mars, title: "MALE", callbackAction: (){}),
                   ),
                 ),
                 Expanded(
                   child: boxContainer(
                     color: ColorConstant.activeContainerColor,
-                    cardChild: genderCard(icon: FontAwesomeIcons.venus, title: "FEMALE"),
+                    cardChild: genderCard(icon: FontAwesomeIcons.venus, title: "FEMALE", callbackAction: (){}),
                   ),
                 ),
               ],
@@ -86,26 +86,29 @@ class _InputScreenState extends State<InputScreen> {
     );
   }
 
-  Widget genderCard({required IconData icon, required String title}){
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(
-          icon,
-          size: 80.0,
-          color: Colors.white,
-        ),
-        const SizedBox(
-          height: 15.0,
-        ),
-        Text(
-          title,
-          style: const TextStyle(
-            fontSize: 18,
-            color: Color(0xFF8D8E98),
+  Widget genderCard({required IconData icon, required String title, required GestureTapCallback callbackAction}){
+    return GestureDetector(
+      onTap: callbackAction,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            icon,
+            size: 80.0,
+            color: Colors.white,
           ),
-        ),
-      ],
+          const SizedBox(
+            height: 15.0,
+          ),
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 18,
+              color: Color(0xFF8D8E98),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
