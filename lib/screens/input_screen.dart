@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/models/gender_enum.dart';
 import 'package:bmi_calculator/reusable/color_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -13,8 +14,8 @@ class _InputScreenState extends State<InputScreen> {
   Color maleCardColor = ColorConstant.inActiveContainerColor;
   Color femaleCardColor = ColorConstant.inActiveContainerColor;
 
-  void updateColor(int genderSelected) {
-    if (genderSelected == 1) {
+  void updateColor(GenderEnum gender) {
+    if (gender == GenderEnum.male) {
       if (maleCardColor == ColorConstant.inActiveContainerColor) {
         maleCardColor = ColorConstant.activeContainerColor;
         femaleCardColor = ColorConstant.inActiveContainerColor;
@@ -22,7 +23,7 @@ class _InputScreenState extends State<InputScreen> {
         maleCardColor = ColorConstant.inActiveContainerColor;
       }
     }
-    if (genderSelected == 2) {
+    if (gender == GenderEnum.female) {
       if (femaleCardColor == ColorConstant.inActiveContainerColor) {
         femaleCardColor = ColorConstant.activeContainerColor;
         maleCardColor = ColorConstant.inActiveContainerColor;
@@ -48,29 +49,43 @@ class _InputScreenState extends State<InputScreen> {
             child: Row(
               children: [
                 Expanded(
-                  child: boxContainer(
-                    color: maleCardColor,
-                    cardChild: genderCard(
-                        icon: FontAwesomeIcons.mars,
-                        title: "MALE",
-                        callbackAction: () {
-                          setState(() {
-                            updateColor(1);
-                          });
-                        }),
+                  child: GestureDetector(
+                    onTap: (){
+                      setState(() {
+                        updateColor(GenderEnum.male);
+                      });
+                    },
+                    child: boxContainer(
+                      color: maleCardColor,
+                      cardChild: genderCard(
+                          icon: FontAwesomeIcons.mars,
+                          title: "MALE",
+                          callbackAction: () {
+                            setState(() {
+                              updateColor(GenderEnum.male);
+                            });
+                          }),
+                    ),
                   ),
                 ),
                 Expanded(
-                  child: boxContainer(
-                    color: femaleCardColor,
-                    cardChild: genderCard(
-                        icon: FontAwesomeIcons.venus,
-                        title: "FEMALE",
-                        callbackAction: () {
-                          setState(() {
-                            updateColor(2);
-                          });
-                        }),
+                  child: GestureDetector(
+                    onTap: (){
+                      setState(() {
+                        updateColor(GenderEnum.female);
+                      });
+                    },
+                    child: boxContainer(
+                      color: femaleCardColor,
+                      cardChild: genderCard(
+                          icon: FontAwesomeIcons.venus,
+                          title: "FEMALE",
+                          callbackAction: () {
+                            setState(() {
+                              updateColor(GenderEnum.female);
+                            });
+                          }),
+                    ),
                   ),
                 ),
               ],
