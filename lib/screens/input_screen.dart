@@ -17,23 +17,16 @@ class _InputScreenState extends State<InputScreen> {
   void updateColor(int genderSelected){
    if(genderSelected == 1){
      if(maleCardColor == ColorConstant.inActiveContainerColor){
-       setState(() {
          maleCardColor = ColorConstant.activeContainerColor;
-       });
      }else{
-       setState(() {
          maleCardColor = ColorConstant.inActiveContainerColor;
-       });
      }
-   }else{
+   }
+   if(genderSelected == 2){
      if(femaleCardColor == ColorConstant.inActiveContainerColor){
-       setState(() {
          femaleCardColor = ColorConstant.activeContainerColor;
-       });
      }else{
-       setState(() {
-         femaleCardColor = ColorConstant.inActiveContainerColor;
-       });
+             femaleCardColor = ColorConstant.inActiveContainerColor;
      }
    }
   }
@@ -55,13 +48,21 @@ class _InputScreenState extends State<InputScreen> {
                 Expanded(
                   child: boxContainer(
                     color: maleCardColor,
-                    cardChild: genderCard(icon: FontAwesomeIcons.mars, title: "MALE", callbackAction: (){}),
+                    cardChild: genderCard(icon: FontAwesomeIcons.mars, title: "MALE", callbackAction: (){
+                      setState(() {
+                        updateColor(1);
+                      });
+                    }),
                   ),
                 ),
                 Expanded(
                   child: boxContainer(
                     color: femaleCardColor,
-                    cardChild: genderCard(icon: FontAwesomeIcons.venus, title: "FEMALE", callbackAction: (){}),
+                    cardChild: genderCard(icon: FontAwesomeIcons.venus, title: "FEMALE", callbackAction: (){
+                      setState(() {
+                        updateColor(2);
+                      });
+                    }),
                   ),
                 ),
               ],
