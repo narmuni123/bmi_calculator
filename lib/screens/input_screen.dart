@@ -32,8 +32,8 @@ class _InputScreenState extends State<InputScreen> {
                 Expanded(
                   child: boxContainer(
                       color: selectedGender == GenderEnum.male
-                          ? ColorConstant.activeContainerColor
-                          : ColorConstant.inActiveContainerColor,
+                          ? ColorConstant.kActiveContainerColor
+                          : ColorConstant.kInActiveContainerColor,
                       cardChild: genderCard(
                         icon: FontAwesomeIcons.mars,
                         title: "MALE",
@@ -47,8 +47,8 @@ class _InputScreenState extends State<InputScreen> {
                 Expanded(
                   child: boxContainer(
                       color: selectedGender == GenderEnum.female
-                          ? ColorConstant.activeContainerColor
-                          : ColorConstant.inActiveContainerColor,
+                          ? ColorConstant.kActiveContainerColor
+                          : ColorConstant.kInActiveContainerColor,
                       cardChild: genderCard(
                         icon: FontAwesomeIcons.venus,
                         title: "FEMALE",
@@ -64,7 +64,7 @@ class _InputScreenState extends State<InputScreen> {
           ),
           Expanded(
             child: boxContainer(
-                color: ColorConstant.activeContainerColor,
+                color: ColorConstant.kActiveContainerColor,
                 cardChild: Column(
                   children: [
                     Text("")
@@ -77,13 +77,13 @@ class _InputScreenState extends State<InputScreen> {
               children: [
                 Expanded(
                   child: boxContainer(
-                      color: ColorConstant.activeContainerColor,
+                      color: ColorConstant.kActiveContainerColor,
                       cardChild: const SizedBox(),
                       onPress: () {}),
                 ),
                 Expanded(
                   child: boxContainer(
-                      color: ColorConstant.activeContainerColor,
+                      color: ColorConstant.kActiveContainerColor,
                       cardChild: const SizedBox(),
                       onPress: () {}),
                 ),
@@ -91,7 +91,7 @@ class _InputScreenState extends State<InputScreen> {
             ),
           ),
           Container(
-            color: ColorConstant.bottomContainerColor,
+            color: ColorConstant.kBottomContainerColor,
             margin: const EdgeInsets.only(top: 10),
             width: double.infinity,
             height: 80,
@@ -132,7 +132,7 @@ class _InputScreenState extends State<InputScreen> {
         ),
         Text(
           title,
-          style: labelStyle,
+          style: kLabelStyle,
         ),
       ],
     );
