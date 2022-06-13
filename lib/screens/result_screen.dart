@@ -6,6 +6,12 @@ class ResultBmi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("BMI CALCULATOR"),
+        centerTitle: true,
+      ),
+      body: Container(),
+    );
   }
 }

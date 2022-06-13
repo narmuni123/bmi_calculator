@@ -1,6 +1,7 @@
 import 'package:bmi_calculator/models/gender_enum.dart';
 import 'package:bmi_calculator/reusable/color_constant.dart';
 import 'package:bmi_calculator/reusable/style.dart';
+import 'package:bmi_calculator/screens/result_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -120,86 +121,117 @@ class _InputScreenState extends State<InputScreen> {
                 onPress: () {}),
           ),
           Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: boxContainer(
-                    color: ColorConstant.kActiveContainerColor,
-                    cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "WEIGHT",
-                          style: kLabelStyle,
-                        ),
-                        Text(
-                          "$weight",
-                          style: kNumberTextStyle,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children:  [
-                            RoundIconButton(icon: FontAwesomeIcons.minus, callBack: (){
+              child: Row(
+            children: [
+              Expanded(
+                child: boxContainer(
+                  color: ColorConstant.kActiveContainerColor,
+                  cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "WEIGHT",
+                        style: kLabelStyle,
+                      ),
+                      Text(
+                        "$weight",
+                        style: kNumberTextStyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RoundIconButton(
+                            icon: FontAwesomeIcons.minus,
+                            callBack: () {
                               setState(() {
                                 weight--;
                               });
-                            },),
-                            const SizedBox(width: 10,),
-                            RoundIconButton(icon: FontAwesomeIcons.plus, callBack: (){
+                            },
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          RoundIconButton(
+                            icon: FontAwesomeIcons.plus,
+                            callBack: () {
                               setState(() {
                                 weight++;
                               });
-                            },),
-                          ],
-                        ),
-                      ],
-                    ),
-                    onPress: () {},
+                            },
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
+                  onPress: () {},
                 ),
-                Expanded(
-                  child: boxContainer(
-                    color: ColorConstant.kActiveContainerColor,
-                    cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "AGE",
-                          style: kLabelStyle,
-                        ),
-                        Text(
-                          "$age",
-                          style: kNumberTextStyle,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children:  [
-                            RoundIconButton(icon: FontAwesomeIcons.minus, callBack: (){
+              ),
+              Expanded(
+                child: boxContainer(
+                  color: ColorConstant.kActiveContainerColor,
+                  cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "AGE",
+                        style: kLabelStyle,
+                      ),
+                      Text(
+                        "$age",
+                        style: kNumberTextStyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RoundIconButton(
+                            icon: FontAwesomeIcons.minus,
+                            callBack: () {
                               setState(() {
                                 age--;
                               });
-                            },),
-                            const SizedBox(width: 10,),
-                            RoundIconButton(icon: FontAwesomeIcons.plus, callBack: (){
+                            },
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          RoundIconButton(
+                            icon: FontAwesomeIcons.plus,
+                            callBack: () {
                               setState(() {
                                 age++;
                               });
-                            },),
-                          ],
-                        ),
-                      ],
-                    ),
-                    onPress: () {},
+                            },
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  onPress: () {},
+                ),
+              ),
+            ],
+          )),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const ResultBmi()));
+            },
+            child: Container(
+              color: ColorConstant.kBottomContainerColor,
+              margin: const EdgeInsets.only(top: 10),
+              width: double.infinity,
+              height: 80,
+              child: const Center(
+                child: Text(
+                  "CALCULATE",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontSize: 28,
                   ),
                 ),
-              ],
-            )
-          ),
-          Container(
-            color: ColorConstant.kBottomContainerColor,
-            margin: const EdgeInsets.only(top: 10),
-            width: double.infinity,
-            height: 80,
+              ),
+            ),
           ),
         ],
       ),
@@ -244,27 +276,22 @@ class _InputScreenState extends State<InputScreen> {
   }
 }
 
-
 class RoundIconButton extends StatelessWidget {
-  const RoundIconButton({Key? key, required this.icon, required this.callBack}) : super(key: key);
+  const RoundIconButton({Key? key, required this.icon, required this.callBack})
+      : super(key: key);
 
   final IconData icon;
   final VoidCallback callBack;
-
 
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
       child: Icon(icon),
       elevation: 6,
-      constraints: const BoxConstraints.tightFor(
-        height: 45.0,
-        width: 45.0
-      ),
+      constraints: const BoxConstraints.tightFor(height: 45.0, width: 45.0),
       shape: const CircleBorder(),
       fillColor: const Color(0xFF4C4F5E),
       onPressed: callBack,
     );
   }
 }
-
