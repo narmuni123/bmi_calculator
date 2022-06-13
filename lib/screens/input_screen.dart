@@ -13,28 +13,6 @@ class InputScreen extends StatefulWidget {
 class _InputScreenState extends State<InputScreen> {
   GenderEnum? selectedGender;
 
-  // Color maleCardColor = ColorConstant.inActiveContainerColor;
-  // Color femaleCardColor = ColorConstant.inActiveContainerColor;
-  //
-  // void updateColor(GenderEnum gender) {
-  //   if (gender == GenderEnum.male) {
-  //     if (maleCardColor == ColorConstant.inActiveContainerColor) {
-  //       maleCardColor = ColorConstant.activeContainerColor;
-  //       femaleCardColor = ColorConstant.inActiveContainerColor;
-  //     } else {
-  //       maleCardColor = ColorConstant.inActiveContainerColor;
-  //     }
-  //   }
-  //   if (gender == GenderEnum.female) {
-  //     if (femaleCardColor == ColorConstant.inActiveContainerColor) {
-  //       femaleCardColor = ColorConstant.activeContainerColor;
-  //       maleCardColor = ColorConstant.inActiveContainerColor;
-  //     } else {
-  //       femaleCardColor = ColorConstant.inActiveContainerColor;
-  //     }
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,39 +29,35 @@ class _InputScreenState extends State<InputScreen> {
             child: Row(
               children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedGender = GenderEnum.male;
-                      });
-                    },
-                    child: boxContainer(
-                      color: selectedGender == GenderEnum.male
-                          ? ColorConstant.activeContainerColor
-                          : ColorConstant.inActiveContainerColor,
-                      cardChild: genderCard(
-                        icon: FontAwesomeIcons.mars,
-                        title: "MALE",
-                      ),
+                  child: boxContainer(
+                    color: selectedGender == GenderEnum.male
+                        ? ColorConstant.activeContainerColor
+                        : ColorConstant.inActiveContainerColor,
+                    cardChild: genderCard(
+                      icon: FontAwesomeIcons.mars,
+                      title: "MALE",
                     ),
+                      onPress: (){
+                        setState(() {
+                          selectedGender = GenderEnum.male;
+                        });
+                      }
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedGender = GenderEnum.female;
-                      });
-                    },
-                    child: boxContainer(
-                      color: selectedGender == GenderEnum.female
-                          ? ColorConstant.activeContainerColor
-                          : ColorConstant.inActiveContainerColor,
-                      cardChild: genderCard(
-                        icon: FontAwesomeIcons.venus,
-                        title: "FEMALE",
-                      ),
+                  child: boxContainer(
+                    color: selectedGender == GenderEnum.female
+                        ? ColorConstant.activeContainerColor
+                        : ColorConstant.inActiveContainerColor,
+                    cardChild: genderCard(
+                      icon: FontAwesomeIcons.venus,
+                      title: "FEMALE",
                     ),
+                      onPress: (){
+                        setState(() {
+                          selectedGender = GenderEnum.female;
+                        });
+                      }
                   ),
                 ),
               ],
@@ -93,6 +67,7 @@ class _InputScreenState extends State<InputScreen> {
             child: boxContainer(
               color: ColorConstant.activeContainerColor,
               cardChild: const SizedBox(),
+              onPress: (){}
             ),
           ),
           Expanded(
@@ -102,12 +77,14 @@ class _InputScreenState extends State<InputScreen> {
                   child: boxContainer(
                     color: ColorConstant.activeContainerColor,
                     cardChild: const SizedBox(),
+                    onPress: (){}
                   ),
                 ),
                 Expanded(
                   child: boxContainer(
                     color: ColorConstant.activeContainerColor,
                     cardChild: const SizedBox(),
+                    onPress: (){}
                   ),
                 ),
               ],
@@ -124,14 +101,17 @@ class _InputScreenState extends State<InputScreen> {
     );
   }
 
-  Widget boxContainer({required Color color, required Widget cardChild}) {
-    return Container(
-      margin: const EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(10),
+  Widget boxContainer({required Color color, required Widget cardChild, required VoidCallback onPress}) {
+    return GestureDetector(
+      onTap: onPress,
+      child: Container(
+        margin: const EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: cardChild,
       ),
-      child: cardChild,
     );
   }
 
