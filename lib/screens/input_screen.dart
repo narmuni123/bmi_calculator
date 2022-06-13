@@ -25,6 +25,7 @@ class _InputScreenState extends State<InputScreen> {
         ),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: Row(
@@ -66,8 +67,27 @@ class _InputScreenState extends State<InputScreen> {
             child: boxContainer(
                 color: ColorConstant.kActiveContainerColor,
                 cardChild: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("")
+                    const Text(
+                      "HEIGHT",
+                      style: kLabelStyle,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: const [
+                        Text(
+                          "180",
+                          style: kNumberTextStyle,
+                        ),
+                        Text(
+                          "CM",
+                          style: kLabelStyle,
+                        )
+                      ],
+                    ),
                   ],
                 ),
                 onPress: () {}),
