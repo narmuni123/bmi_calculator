@@ -14,6 +14,9 @@ class InputScreen extends StatefulWidget {
 class _InputScreenState extends State<InputScreen> {
   GenderEnum? selectedGender;
 
+  int height = 180;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,16 +80,28 @@ class _InputScreenState extends State<InputScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.baseline,
                       textBaseline: TextBaseline.alphabetic,
-                      children: const [
+                      children:  [
                         Text(
-                          "180",
+                          "$height",
                           style: kNumberTextStyle,
                         ),
-                        Text(
+                        const Text(
                           "CM",
                           style: kLabelStyle,
                         )
                       ],
+                    ),
+                    Slider(
+                      value: height.toDouble(),
+                      min: 120.0,
+                      max: 220.0,
+                      activeColor: const Color(0xFFEB1555),
+                      inactiveColor: const Color(0xFF8D8E98),
+                      onChanged: (value){
+                        setState(() {
+                          height = value.round();
+                        });
+                      },
                     ),
                   ],
                 ),
