@@ -11,27 +11,29 @@ class InputScreen extends StatefulWidget {
 }
 
 class _InputScreenState extends State<InputScreen> {
-  Color maleCardColor = ColorConstant.inActiveContainerColor;
-  Color femaleCardColor = ColorConstant.inActiveContainerColor;
+  GenderEnum? selectedGender;
 
-  void updateColor(GenderEnum gender) {
-    if (gender == GenderEnum.male) {
-      if (maleCardColor == ColorConstant.inActiveContainerColor) {
-        maleCardColor = ColorConstant.activeContainerColor;
-        femaleCardColor = ColorConstant.inActiveContainerColor;
-      } else {
-        maleCardColor = ColorConstant.inActiveContainerColor;
-      }
-    }
-    if (gender == GenderEnum.female) {
-      if (femaleCardColor == ColorConstant.inActiveContainerColor) {
-        femaleCardColor = ColorConstant.activeContainerColor;
-        maleCardColor = ColorConstant.inActiveContainerColor;
-      } else {
-        femaleCardColor = ColorConstant.inActiveContainerColor;
-      }
-    }
-  }
+  // Color maleCardColor = ColorConstant.inActiveContainerColor;
+  // Color femaleCardColor = ColorConstant.inActiveContainerColor;
+  //
+  // void updateColor(GenderEnum gender) {
+  //   if (gender == GenderEnum.male) {
+  //     if (maleCardColor == ColorConstant.inActiveContainerColor) {
+  //       maleCardColor = ColorConstant.activeContainerColor;
+  //       femaleCardColor = ColorConstant.inActiveContainerColor;
+  //     } else {
+  //       maleCardColor = ColorConstant.inActiveContainerColor;
+  //     }
+  //   }
+  //   if (gender == GenderEnum.female) {
+  //     if (femaleCardColor == ColorConstant.inActiveContainerColor) {
+  //       femaleCardColor = ColorConstant.activeContainerColor;
+  //       maleCardColor = ColorConstant.inActiveContainerColor;
+  //     } else {
+  //       femaleCardColor = ColorConstant.inActiveContainerColor;
+  //     }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -50,41 +52,37 @@ class _InputScreenState extends State<InputScreen> {
               children: [
                 Expanded(
                   child: GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       setState(() {
-                        updateColor(GenderEnum.male);
+                        selectedGender = GenderEnum.male;
                       });
                     },
                     child: boxContainer(
-                      color: maleCardColor,
+                      color: selectedGender == GenderEnum.male
+                          ? ColorConstant.activeContainerColor
+                          : ColorConstant.inActiveContainerColor,
                       cardChild: genderCard(
-                          icon: FontAwesomeIcons.mars,
-                          title: "MALE",
-                          callbackAction: () {
-                            setState(() {
-                              updateColor(GenderEnum.male);
-                            });
-                          }),
+                        icon: FontAwesomeIcons.mars,
+                        title: "MALE",
+                      ),
                     ),
                   ),
                 ),
                 Expanded(
                   child: GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       setState(() {
-                        updateColor(GenderEnum.female);
+                        selectedGender = GenderEnum.female;
                       });
                     },
                     child: boxContainer(
-                      color: femaleCardColor,
+                      color: selectedGender == GenderEnum.female
+                          ? ColorConstant.activeContainerColor
+                          : ColorConstant.inActiveContainerColor,
                       cardChild: genderCard(
-                          icon: FontAwesomeIcons.venus,
-                          title: "FEMALE",
-                          callbackAction: () {
-                            setState(() {
-                              updateColor(GenderEnum.female);
-                            });
-                          }),
+                        icon: FontAwesomeIcons.venus,
+                        title: "FEMALE",
+                      ),
                     ),
                   ),
                 ),
@@ -137,32 +135,26 @@ class _InputScreenState extends State<InputScreen> {
     );
   }
 
-  Widget genderCard(
-      {required IconData icon,
-      required String title,
-      required GestureTapCallback callbackAction}) {
-    return GestureDetector(
-      onTap: callbackAction,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            icon,
-            size: 80.0,
-            color: Colors.white,
+  Widget genderCard({required IconData icon, required String title}) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(
+          icon,
+          size: 80.0,
+          color: Colors.white,
+        ),
+        const SizedBox(
+          height: 15.0,
+        ),
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 18,
+            color: Color(0xFF8D8E98),
           ),
-          const SizedBox(
-            height: 15.0,
-          ),
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 18,
-              color: Color(0xFF8D8E98),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
