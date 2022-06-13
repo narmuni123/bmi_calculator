@@ -16,6 +16,8 @@ class _InputScreenState extends State<InputScreen> {
 
   int height = 180;
 
+  int weight = 60;
+  int age = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +82,7 @@ class _InputScreenState extends State<InputScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.baseline,
                       textBaseline: TextBaseline.alphabetic,
-                      children:  [
+                      children: [
                         Text(
                           "$height",
                           style: kNumberTextStyle,
@@ -97,14 +99,16 @@ class _InputScreenState extends State<InputScreen> {
                         activeTrackColor: Colors.white,
                         thumbColor: const Color(0xFFEB1555),
                         overlayColor: const Color(0x15EB1555),
-                        thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 15.0),
-                        overlayShape: const RoundSliderOverlayShape(overlayRadius: 20),
+                        thumbShape: const RoundSliderThumbShape(
+                            enabledThumbRadius: 15.0),
+                        overlayShape:
+                            const RoundSliderOverlayShape(overlayRadius: 20),
                       ),
                       child: Slider(
                         value: height.toDouble(),
                         min: 120.0,
                         max: 220.0,
-                        onChanged: (value){
+                        onChanged: (value) {
                           setState(() {
                             height = value.round();
                           });
@@ -120,18 +124,76 @@ class _InputScreenState extends State<InputScreen> {
               children: [
                 Expanded(
                   child: boxContainer(
-                      color: ColorConstant.kActiveContainerColor,
-                      cardChild: const SizedBox(),
-                      onPress: () {}),
+                    color: ColorConstant.kActiveContainerColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "WEIGHT",
+                          style: kLabelStyle,
+                        ),
+                        Text(
+                          "$weight",
+                          style: kNumberTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children:  [
+                            RoundIconButton(icon: FontAwesomeIcons.minus, callBack: (){
+                              setState(() {
+                                weight--;
+                              });
+                            },),
+                            const SizedBox(width: 10,),
+                            RoundIconButton(icon: FontAwesomeIcons.plus, callBack: (){
+                              setState(() {
+                                weight++;
+                              });
+                            },),
+                          ],
+                        ),
+                      ],
+                    ),
+                    onPress: () {},
+                  ),
                 ),
                 Expanded(
                   child: boxContainer(
-                      color: ColorConstant.kActiveContainerColor,
-                      cardChild: const SizedBox(),
-                      onPress: () {}),
+                    color: ColorConstant.kActiveContainerColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "AGE",
+                          style: kLabelStyle,
+                        ),
+                        Text(
+                          "$age",
+                          style: kNumberTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children:  [
+                            RoundIconButton(icon: FontAwesomeIcons.minus, callBack: (){
+                              setState(() {
+                                age--;
+                              });
+                            },),
+                            const SizedBox(width: 10,),
+                            RoundIconButton(icon: FontAwesomeIcons.plus, callBack: (){
+                              setState(() {
+                                age++;
+                              });
+                            },),
+                          ],
+                        ),
+                      ],
+                    ),
+                    onPress: () {},
+                  ),
                 ),
               ],
-            ),
+            )
           ),
           Container(
             color: ColorConstant.kBottomContainerColor,
@@ -181,3 +243,28 @@ class _InputScreenState extends State<InputScreen> {
     );
   }
 }
+
+
+class RoundIconButton extends StatelessWidget {
+  const RoundIconButton({Key? key, required this.icon, required this.callBack}) : super(key: key);
+
+  final IconData icon;
+  final VoidCallback callBack;
+
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      child: Icon(icon),
+      elevation: 6,
+      constraints: const BoxConstraints.tightFor(
+        height: 45.0,
+        width: 45.0
+      ),
+      shape: const CircleBorder(),
+      fillColor: const Color(0xFF4C4F5E),
+      onPressed: callBack,
+    );
+  }
+}
+
