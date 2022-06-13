@@ -91,17 +91,25 @@ class _InputScreenState extends State<InputScreen> {
                         )
                       ],
                     ),
-                    Slider(
-                      value: height.toDouble(),
-                      min: 120.0,
-                      max: 220.0,
-                      activeColor: const Color(0xFFEB1555),
-                      inactiveColor: const Color(0xFF8D8E98),
-                      onChanged: (value){
-                        setState(() {
-                          height = value.round();
-                        });
-                      },
+                    SliderTheme(
+                      data: SliderTheme.of(context).copyWith(
+                        inactiveTrackColor: const Color(0xFF8D8E98),
+                        activeTrackColor: Colors.white,
+                        thumbColor: const Color(0xFFEB1555),
+                        overlayColor: const Color(0x15EB1555),
+                        thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                        overlayShape: const RoundSliderOverlayShape(overlayRadius: 20),
+                      ),
+                      child: Slider(
+                        value: height.toDouble(),
+                        min: 120.0,
+                        max: 220.0,
+                        onChanged: (value){
+                          setState(() {
+                            height = value.round();
+                          });
+                        },
+                      ),
                     ),
                   ],
                 ),
