@@ -224,11 +224,7 @@ class _InputScreenState extends State<InputScreen> {
               child: const Center(
                 child: Text(
                   "CALCULATE",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    fontSize: 28,
-                  ),
+                  style: kLargeButtonTextStyle,
                 ),
               ),
             ),
