@@ -17,9 +17,13 @@ class ResultBmi extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            child: Text(
-              "Your Result",
-              style: kTitleTextStyle,
+            child: Container(
+              padding: EdgeInsets.all(15),
+              alignment: Alignment.bottomLeft,
+              child: Text(
+                "Your Result",
+                style: kTitleTextStyle,
+              ),
             ),
           ),
           Expanded(
@@ -45,6 +49,23 @@ class ResultBmi extends StatelessWidget {
                     style: kBodyResultTextStyle,
                   ),
                 ],
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+             Navigator.of(context).pop();
+            },
+            child: Container(
+              color: ColorConstant.kBottomContainerColor,
+              margin: const EdgeInsets.only(top: 10),
+              width: double.infinity,
+              height: 80,
+              child: const Center(
+                child: Text(
+                  "RE-CALCULATE",
+                  style: kLargeButtonTextStyle,
+                ),
               ),
             ),
           ),
