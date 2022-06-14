@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/calculator_brain.dart';
 import 'package:bmi_calculator/models/gender_enum.dart';
 import 'package:bmi_calculator/reusable/color_constant.dart';
 import 'package:bmi_calculator/reusable/style.dart';
@@ -213,8 +214,18 @@ class _InputScreenState extends State<InputScreen> {
           )),
           GestureDetector(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const ResultBmi()));
+              CalculatorBrain calc =
+                  CalculatorBrain(weight: weight, height: height);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultBmi(
+                    bmiResult: calc.calculateBMI(),
+                    interpretation: calc.getInterpretation(),
+                    resultText: calc.getResult(),
+                  ),
+                ),
+              );
             },
             child: Container(
               color: ColorConstant.kBottomContainerColor,

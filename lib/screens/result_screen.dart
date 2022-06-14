@@ -3,13 +3,18 @@ import 'package:bmi_calculator/reusable/style.dart';
 import 'package:flutter/material.dart';
 
 class ResultBmi extends StatelessWidget {
-  const ResultBmi({Key? key}) : super(key: key);
+
+  const ResultBmi({Key? key, required this.bmiResult, required this.interpretation, required this.resultText}) : super(key: key);
+
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("BMI CALCULATOR"),
+        title: const Text("BMI CALCULATOR"),
         centerTitle: true,
       ),
       body: Column(
@@ -18,9 +23,9 @@ class ResultBmi extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              padding: EdgeInsets.all(15),
+              padding: const EdgeInsets.all(15),
               alignment: Alignment.bottomLeft,
-              child: Text(
+              child: const Text(
                 "Your Result",
                 style: kTitleTextStyle,
               ),
@@ -36,15 +41,15 @@ class ResultBmi extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "Noraml",
+                    resultText.toUpperCase(),
                     style: kResultTextStyle,
                   ),
                   Text(
-                    "18.3",
+                    bmiResult,
                     style: kBMITextStyle,
                   ),
                   Text(
-                    "",
+                    interpretation,
                     textAlign: TextAlign.center,
                     style: kBodyResultTextStyle,
                   ),
